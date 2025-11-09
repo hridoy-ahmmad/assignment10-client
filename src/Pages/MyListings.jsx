@@ -1,11 +1,11 @@
 import React from 'react';
 
-const AddCar = () => {
+const MyListings = () => {
     return (
         <div>
-            add car
+            My Listings.jsx
         </div>
     );
 };
 
-export default AddCar;
+export default MyListings;

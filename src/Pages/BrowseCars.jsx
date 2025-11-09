@@ -1,11 +1,11 @@
 import React from 'react';
 
-const AddCar = () => {
+const BrowseCars = () => {
     return (
         <div>
-            add car
+            BrowseCars
         </div>
     );
 };
 
-export default AddCar;
+export default BrowseCars;
