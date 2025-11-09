@@ -74,7 +74,7 @@ const Nav = () => {
                         </ul>
                     </div>
                     <Link to={'/'} className='flex justify-center items-center'>
-                        <img src={logo} width={'100px'} className='rounded-bl-2xl hidden lg:block md:block' alt="" />
+                        <img src={logo} width={'100px'} className='rounded-bl-2xl hidden lg:block' alt="" />
                         <a className=" text-xl text-red-500 font-extrabold ml-2">TurboTrack</a>
                     </Link>
                 </div>
@@ -86,7 +86,7 @@ const Nav = () => {
                     </ul>
                 </div>
                 <div className="navbar-end cursor-pointer text-white">
-                    <a className=" bg-[#E83E3F] border-none py-3 px-8 rounded-lg hover:bg-[#f93E3F] transition-colors duration-100">login/SIgnup</a>
+                    <Link className=" bg-[#E83E3F] border-none py-3 px-8 rounded-lg hover:bg-[#f93E3F] transition-colors duration-100">login/SIgnup</Link>
                 </div>
             </div>
         </div>
