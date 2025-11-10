@@ -6,6 +6,7 @@ import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import { auth } from '../Firebase/firebase.config';
 import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
 
 
 const Login = () => {
@@ -32,22 +33,29 @@ const Login = () => {
                 toast.warning(err.message)
             });
     }
-    const handleSubmit = (e) =>{
+    const handleSubmit = (e) => {
         e.preventDefault()
         const email = e.target.email.value
         const password = e.target.password.value
 
         loginEmailPassword(email, password)
-        .then((result) => {
-            const user = result.user
-            console.log(user);
-            navigate(`${location.state? location.state : '/' }`)
-            toast.success('Login Successfull')
-        }).catch((err) => {
-            toast.warning(err.message)
-        });
+            .then((result) => {
+                const user = result.user
+                console.log(user);
+                navigate(`${location.state ? location.state : '/'}`)
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Login Successfull",
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+                // toast.success('Login Successfull')
+            }).catch((err) => {
+                toast.warning(err.message)
+            });
     }
-    
+
 
     return (
         <section className="bg-gray-50 dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8 flex justify-center items-center min-h-screen">

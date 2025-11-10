@@ -4,6 +4,7 @@ import logo from '../assets/logo.png'
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import { auth } from '../Firebase/firebase.config';
 import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
 
 const Nav = () => {
     const { user, logOut } = useContext(AuthContext)
@@ -12,14 +13,31 @@ const Nav = () => {
     console.log(user);
 
     const handleSignOut = () => {
-        logOut(auth)
-            .then(() => {
-                navigate('/')
-                alert('are you sure to log Out!')
-                toast.success('Log Out Successfull')
-            }).catch(() => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, Log Out!"
+        }).then((result) => {
+            if (result.isConfirmed)
+                logOut(auth)
+                    .then(() => {
+                        navigate('/')
+                        {
+                            Swal.fire({
+                                title: "Logged Out!",
+                                text: "Log Out Successfull.",
+                                icon: "success"
+                            });
+                        }
+                    });
+            
+        }).catch(() => {
 
-            });
+        });
 
     }
 

@@ -5,6 +5,7 @@ import { AuthContext } from '../AuthProvider/AuthProvider';
 import { toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router';
 import { auth } from '../Firebase/firebase.config';
+import Swal from 'sweetalert2';
 
 
 const Registration = () => {
@@ -13,7 +14,6 @@ const Registration = () => {
     const [show, setShow] = useState(false)
     const [error, setError] = useState('')
     const navigate = useNavigate()
-
 
     const handleShowPass = () => {
         setShow(!show)
@@ -26,7 +26,6 @@ const Registration = () => {
         const password = e.target.password.value
 
         // Password Validation
-
         const passLenght = password.length >= 6
         const uppercase = /[A-Z]/
         const lowercase = /[a-z]/
@@ -46,7 +45,7 @@ const Registration = () => {
         createUSer(email, password)
             .then((result) => {
                 const user = result.user
-                updateUser(user, {
+                updateUser({
                     displayName: name,
                     photoURL: URL
                 })
@@ -71,7 +70,13 @@ const Registration = () => {
                 const user = result.user
                 setUser(user)
                 navigate('/')
-                toast.success('Login Successfull')
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Your work has been saved",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
             }).catch((err) => {
                 toast.warning(err.message)
             });
