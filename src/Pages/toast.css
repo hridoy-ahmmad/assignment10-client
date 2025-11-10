@@ -1,0 +1,7 @@
+.customToast {
+    top: 40px !important;
+    left: 65% !important;
+    transform: translateX(-50%);
+    position: fixed !important;
+    z-index: 9999 !important;
+}

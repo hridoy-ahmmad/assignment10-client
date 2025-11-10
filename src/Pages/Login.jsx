@@ -1,72 +1,6 @@
-import React, { useContext, useState } from 'react';
-import { FaEye, FaEyeSlash } from 'react-icons/fa6';
-import { FcGoogle } from 'react-icons/fc';
-import { AuthContext } from '../AuthProvider/AuthProvider';
-import { toast, ToastContainer } from 'react-toastify';
-import { Link, useNavigate } from 'react-router';
+import React from 'react';
 
-
-const Registration = () => {
-
-    const { createUSer, updateUser, setUser } = useContext(AuthContext)
-    const [show, setShow] = useState(false)
-    const[error, setError] = useState('')
-    const navigate = useNavigate()
-
-
-    const handleShowPass = () => {
-        setShow(!show)
-    }
-
-
-
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        const name = e.target.name.value
-        const email = e.target.email.value
-        const URL = e.target.photoURL.value
-        const password = e.target.password.value
-
-        // Password Validation
-
-        const passLenght = password.length >= 6
-         const uppercase = /[A-Z]/
-        const lowercase = /[a-z]/
-
-        if (!passLenght){
-            setError('Must be at least 6 characters long')
-            return
-        }
-        if(!uppercase.test(password)){
-            setError('Must contain at least one uppercase letter')
-            return
-        }
-        if(!lowercase.test(password)){
-            setError('Must contain at least one lowercase letter')
-            return
-        }
-        createUSer(email, password)
-            .then((result) => {
-                const user = result.user
-                updateUser(user, {
-                    displayName: name,
-                    photoURL: URL
-                })
-                    .then(() => {
-                        setUser({ ...user, displayName: name, photoURL: URL })
-                        navigate('/')
-                        toast.success('Registration Successful!');
-                    }).catch((err) => {
-                        toast.error(`Profile Update Failed: ${err.message}`)
-                    });
-
-            }).catch((err) => {
-
-                toast.error(`Registration Failed: ${err.message}`)
-            });
-        e.target.reset()
-    }
-
+const Login = () => {
     return (
         <section className="bg-gray-50 dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8 flex justify-center items-center min-h-screen">
 
@@ -151,7 +85,7 @@ const Registration = () => {
                                 show ? <FaEye className='h-5 w-5 hover:text-red-600' /> : <FaEyeSlash className='h-5 w-5 hover:text-red-600' />
                             }
                         </span>
-                        
+
                     </div><p className='text-red-600'>{error}</p>
 
                     {/* Submit Button */}
@@ -195,4 +129,4 @@ const Registration = () => {
     );
 };
 
-export default Registration;
+export default Login;
