@@ -7,31 +7,32 @@ import MyBookings from "../../Pages/MyBookings";
 import BrowseCars from "../../Pages/BrowseCars";
 
 export const router = createBrowserRouter([
-{
-    path:'/',
-    element:<Root></Root>,
-    children:[
-        {
-            index:true,
-            element:<Home/>
-        },
-        {
-            path:'addCar',
-            element:<AddCar/>
-        },
-        {
-            path:'myListings',
-            element:<MyListings/>
-        },
-        {
-            path:'myBookings',
-            element:<MyBookings></MyBookings>
-        },
-        {
-            path:'browseCars',
-            element:<BrowseCars/>
-        }
-    ]
+    {
+        path: '/',
+        element: <Root></Root>,
+        children: [
+            {
+                index: true,
+                element: <Home />,
+                loader: () => fetch('http://localhost:3000/cars')
+            },
+            {
+                path: 'addCar',
+                element: <AddCar />
+            },
+            {
+                path: 'myListings',
+                element: <MyListings />
+            },
+            {
+                path: 'myBookings',
+                element: <MyBookings></MyBookings>
+            },
+            {
+                path: 'browseCars',
+                element: <BrowseCars />
+            }
+        ]
 
-}
+    }
 ])
