@@ -1,6 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { FaEye } from 'react-icons/fa6';
+import { FcGoogle } from 'react-icons/fc';
+import { IoEyeOff } from 'react-icons/io5';
+import { Link } from 'react-router';
+
 
 const Login = () => {
+    const[show, setShow] = useState(false)
+     const handleShowPass = () => {
+        setShow(!show)
+    }
+    // const handleSubmit = (e) =>{
+    //     e.preventDefault()
+        
+    // }
     return (
         <section className="bg-gray-50 dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8 flex justify-center items-center min-h-screen">
 
@@ -10,24 +23,7 @@ const Login = () => {
                     Create Your Account
                 </h1>
 
-                <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
-                    {/* Name Field */}
-                    <div>
-                        <label
-                            htmlFor="name"
-                            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                        >
-                            Your Name
-                        </label>
-                        <input
-                            type="text"
-                            name="name"
-                            id="name"
-                            className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-red-600 focus:border-red-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
-                            placeholder="Full Name"
-                            required
-                        />
-                    </div>
+                <form className="space-y-4 md:space-y-6">
 
                     {/* Email Field */}
                     <div>
@@ -46,24 +42,6 @@ const Login = () => {
                             required
                         />
                     </div>
-
-                    {/* Photo URL Field */}
-                    <div>
-                        <label
-                            htmlFor="photoURL"
-                            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                        >
-                            Photo URL (Optional)
-                        </label>
-                        <input
-                            type="url"
-                            name="photoURL"
-                            id="photoURL"
-                            className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-red-600 focus:border-red-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
-                            placeholder="Paste your image link here"
-                        />
-                    </div>
-
                     {/* Password Field */}
                     <div className='relative'>
                         <label
@@ -82,28 +60,29 @@ const Login = () => {
                         />
                         <span onClick={handleShowPass} className='text-gray-500 absolute inset-y-0 right-0 top-7 flex items-center pr-3 cursor-pointer'>
                             {
-                                show ? <FaEye className='h-5 w-5 hover:text-red-600' /> : <FaEyeSlash className='h-5 w-5 hover:text-red-600' />
+                                show ? <IoEyeOff className='h-5 w-5 hover:text-red-600' /> : < FaEye className='h-5 w-5 hover:text-red-600' />
+
                             }
                         </span>
 
-                    </div><p className='text-red-600'>{error}</p>
+                    </div>
 
                     {/* Submit Button */}
                     <button
                         type="submit"
                         className="w-full text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800 transition duration-150"
                     >
-                        Create Account
+                       Login
                     </button>
 
                     {/* Link to Login Page - Red Accent */}
                     <p className="text-sm font-light text-gray-500 dark:text-gray-400 text-center">
-                        Already have an account?
+                       Don't have an account?
                         <Link
-                            href="/login"
+                            to={'/registration'}
                             className="font-medium text-red-600 hover:underline dark:text-red-500 ml-1"
                         >
-                            Login here
+                           Registration Here
                         </Link>
                     </p>
                 </form>

@@ -6,6 +6,7 @@ import MyListings from "../../Pages/MyListings";
 import MyBookings from "../../Pages/MyBookings";
 import BrowseCars from "../../Pages/BrowseCars";
 import Registration from "../../Pages/Registration";
+import Login from "../../Pages/Login";
 
 export const router = createBrowserRouter([
     {
@@ -37,6 +38,10 @@ export const router = createBrowserRouter([
             {
                 path:'registration',
                 element:<Registration/>
+            },
+            {
+                path:'login',
+                element:<Login></Login>
             }
         ]
 

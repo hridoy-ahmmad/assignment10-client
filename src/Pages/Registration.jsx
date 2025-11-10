@@ -148,7 +148,7 @@ const Registration = () => {
                         />
                         <span onClick={handleShowPass} className='text-gray-500 absolute inset-y-0 right-0 top-7 flex items-center pr-3 cursor-pointer'>
                             {
-                                show ? <FaEye className='h-5 w-5 hover:text-red-600' /> : <FaEyeSlash className='h-5 w-5 hover:text-red-600' />
+                                show ? <FaEyeSlash className='h-5 w-5 hover:text-red-600' /> : < FaEye className='h-5 w-5 hover:text-red-600' />
                             }
                         </span>
                         
@@ -166,7 +166,7 @@ const Registration = () => {
                     <p className="text-sm font-light text-gray-500 dark:text-gray-400 text-center">
                         Already have an account?
                         <Link
-                            href="/login"
+                            to={'/login'}
                             className="font-medium text-red-600 hover:underline dark:text-red-500 ml-1"
                         >
                             Login here
