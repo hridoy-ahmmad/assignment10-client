@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router';
+import Loading from '../Pages/Loading';
 
 const CarCards = ({ carData }) => {
     console.log(carData);

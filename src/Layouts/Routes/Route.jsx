@@ -42,7 +42,7 @@ export const router = createBrowserRouter([
             {
                 path: 'browseCars',
                 element: <BrowseCars />,
-                loader: () => fetch('http://localhost:3000/cars')
+                // loader: () => fetch('http://localhost:3000/cars')
             },
             {
                 path: 'registration',
