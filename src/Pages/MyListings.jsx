@@ -2,8 +2,8 @@ import React from 'react';
 
 const MyListings = () => {
     return (
-        <div>
-            My Listings.jsx
+        <div className='text-black'>
+            My Listings
         </div>
     );
 };

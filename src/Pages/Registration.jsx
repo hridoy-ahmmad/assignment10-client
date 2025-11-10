@@ -58,7 +58,6 @@ const Registration = () => {
                     });
 
             }).catch((err) => {
-
                 toast.error(`Registration Failed: ${err.message}`)
             });
         e.target.reset()
@@ -130,7 +129,7 @@ const Registration = () => {
                     {/* Photo URL Field */}
                     <div>
                         <label
-                            htmlFor="photoURL"
+                            
                             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                         >
                             Photo URL (Optional)
