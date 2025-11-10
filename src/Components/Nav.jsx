@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router';
 import logo from '../assets/logo.png'
 import { AuthContext } from '../AuthProvider/AuthProvider';
@@ -7,18 +7,19 @@ import { toast } from 'react-toastify';
 
 const Nav = () => {
     const { user, logOut } = useContext(AuthContext)
+    const [modal, setModal] = useState(false)
     const navigate = useNavigate()
     console.log(user);
 
     const handleSignOut = () => {
         logOut(auth)
-        .then(() => {
-            navigate('/')
-            alert('are you sure to log Out!')
-            toast.success('Log Out Successfull')
-        }).catch(() => {
-            
-        });
+            .then(() => {
+                navigate('/')
+                alert('are you sure to log Out!')
+                toast.success('Log Out Successfull')
+            }).catch(() => {
+
+            });
 
     }
 
@@ -76,7 +77,7 @@ const Nav = () => {
     </>
 
     return (
-        <div className=' sticky top-0 z-10  bg-gradient-to-r from-black/70 via-black/70 to-black/70 '>
+        <div className='relative sticky top-0 z-10 h-[100px]  bg-gradient-to-r from-black/70 via-black/70 to-black/70 '>
             <div className="navbar mx-auto max-w-[1140px] flex justify-center items-center p-4 h-25">
                 <div className="navbar-start ">
                     <div className="dropdown">
@@ -104,19 +105,50 @@ const Nav = () => {
                     </ul>
                 </div>
                 <div className="navbar-end cursor-pointer text-white flex gap-2">
+                    <div className=''>
+                        {
+                            user &&
+                            <img
+                                onClick={() => setModal(!modal)}
+                                className='rounded-full w-12 h-12 border-2' src={user.photoURL} alt="" />
+                        }
 
-                    {
-                        user ? <img className='rounded-full w-12 h-12 border-2' src={user.photoURL} alt="" /> : ''
-                    }
 
 
+                    </div>
                     {
                         user ?
                             <Link
                                 onClick={handleSignOut}
                                 className=" bg-[#E83E3F] border-none py-3 px-8 rounded-lg hover:bg-[#f93E3F] transition-colors duration-100">Log Out</Link> : <Link to={'registration'} className=" bg-[#E83E3F] border-none py-3 px-8 rounded-lg hover:bg-[#f93E3F] transition-colors duration-100">login/SIgnup</Link>
                     }
+
                 </div>
+
+            </div>
+            <div className='absolute  lg:right-60'>
+                {modal &&
+                    <div className="bg-gradient-to-r from-black/70  to-red-400 p-6 rounded-xl shadow-lg w-72 text-white flex flex-col items-center gap-4">
+                        <h1 className="text-xl font-bold truncate text-center">{user.displayName}</h1>
+                        <h2 className="text-sm font-medium text-red-100 truncate text-center">{user.email}</h2>
+
+                        <Link
+                            to="/"
+                            onClick={handleSignOut}
+                            className="w-full text-center bg-red-700 hover:bg-red-800 transition-colors duration-200 py-2 px-5 rounded-lg font-semibold shadow-md"
+                        >
+                            Log Out
+                        </Link>
+
+                        <button
+                            onClick={() => setModal(false)}
+                            className="w-full text-center bg-red-500 hover:bg-red-600 transition-colors duration-200 py-2 px-5 rounded-lg font-semibold"
+                        >
+                            Close
+                        </button>
+                    </div>
+
+                }
             </div>
         </div>
     );
