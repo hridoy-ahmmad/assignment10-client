@@ -20,7 +20,7 @@ const Home = () => {
                     <p className='text-black text-center'>Find the perfect ride for your next journey.</p>
                 </div>
 
-                <div className='grid lg:grid-cols-3 lg:grid-rows-2 md:grid-cols-2 md:grid-rows-3 gap-4'>
+                <div className='grid lg:grid-cols-3 lg:grid-rows-2 md:grid-cols-2 md:grid-rows-3 gap-4 p-4'>
                     {
                         carsData.slice(0,6).map(carData => <CarCards key={carData._id} carData={carData}></CarCards>)
                     }
