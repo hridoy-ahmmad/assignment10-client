@@ -1,19 +1,43 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { FaEye } from 'react-icons/fa6';
 import { FcGoogle } from 'react-icons/fc';
 import { IoEyeOff } from 'react-icons/io5';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
+import { AuthContext } from '../AuthProvider/AuthProvider';
+import { auth } from '../Firebase/firebase.config';
+import { toast } from 'react-toastify';
 
 
 const Login = () => {
-    const[show, setShow] = useState(false)
-     const handleShowPass = () => {
+    const { provider, setUser, googleLogin } = useContext(AuthContext)
+    const [show, setShow] = useState(false)
+    const navigate = useNavigate()
+    const handleShowPass = () => {
         setShow(!show)
     }
     // const handleSubmit = (e) =>{
     //     e.preventDefault()
-        
+
     // }
+    const handleGoogleSignIn = (e) => {
+        e.preventDefault()
+        googleLogin(auth, provider)
+            .then((result) => {
+                const user = result.user
+                setUser(user)
+                navigate('/')
+                toast.success('Login Successfull')
+            }).catch((err) => {
+                toast.warning(err.message)
+            });
+    }
+    const handleSubmit = (e) =>{
+        e.preventDefault()
+        const email = e.target.email.value
+        const password = e.target.password.value
+        
+    }
+
     return (
         <section className="bg-gray-50 dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8 flex justify-center items-center min-h-screen">
 
@@ -22,13 +46,12 @@ const Login = () => {
                 <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white text-center">
                     Create Your Account
                 </h1>
-
-                <form className="space-y-4 md:space-y-6">
-
+                <form
+                    onSubmit={handleSubmit}
+                    className="space-y-4 md:space-y-6">
                     {/* Email Field */}
                     <div>
                         <label
-                            htmlFor="email"
                             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                         >
                             Your Email
@@ -45,7 +68,7 @@ const Login = () => {
                     {/* Password Field */}
                     <div className='relative'>
                         <label
-                            htmlFor="password"
+
                             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                         >
                             Password
@@ -72,17 +95,17 @@ const Login = () => {
                         type="submit"
                         className="w-full text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800 transition duration-150"
                     >
-                       Login
+                        Login
                     </button>
 
                     {/* Link to Login Page - Red Accent */}
                     <p className="text-sm font-light text-gray-500 dark:text-gray-400 text-center">
-                       Don't have an account?
+                        Don't have an account?
                         <Link
                             to={'/registration'}
                             className="font-medium text-red-600 hover:underline dark:text-red-500 ml-1"
                         >
-                           Registration Here
+                            Registration
                         </Link>
                     </p>
                 </form>
@@ -96,6 +119,7 @@ const Login = () => {
 
                 {/* Google Login Option */}
                 <button
+                    onClick={handleGoogleSignIn}
                     type="button"
                     className="w-full flex justify-center items-center py-2.5 px-4 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 dark:bg-gray-700 dark:text-white dark:border-gray-600 dark:hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 gap-2.5 shadow-sm transition duration-150"
                 >

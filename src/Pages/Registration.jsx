@@ -2,24 +2,22 @@ import React, { useContext, useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa6';
 import { FcGoogle } from 'react-icons/fc';
 import { AuthContext } from '../AuthProvider/AuthProvider';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router';
+import { auth } from '../Firebase/firebase.config';
 
 
 const Registration = () => {
 
-    const { createUSer, updateUser, setUser } = useContext(AuthContext)
+    const { createUSer, updateUser, setUser, googleLogin, provider } = useContext(AuthContext)
     const [show, setShow] = useState(false)
-    const[error, setError] = useState('')
+    const [error, setError] = useState('')
     const navigate = useNavigate()
 
 
     const handleShowPass = () => {
         setShow(!show)
     }
-
-
-
     const handleSubmit = (e) => {
         e.preventDefault()
         const name = e.target.name.value
@@ -30,18 +28,18 @@ const Registration = () => {
         // Password Validation
 
         const passLenght = password.length >= 6
-         const uppercase = /[A-Z]/
+        const uppercase = /[A-Z]/
         const lowercase = /[a-z]/
 
-        if (!passLenght){
+        if (!passLenght) {
             setError('Must be at least 6 characters long')
             return
         }
-        if(!uppercase.test(password)){
+        if (!uppercase.test(password)) {
             setError('Must contain at least one uppercase letter')
             return
         }
-        if(!lowercase.test(password)){
+        if (!lowercase.test(password)) {
             setError('Must contain at least one lowercase letter')
             return
         }
@@ -66,7 +64,18 @@ const Registration = () => {
             });
         e.target.reset()
     }
-
+    const handleGoogleSignIn = (e) => {
+        e.preventDefault()
+        googleLogin(auth, provider)
+            .then((result) => {
+                const user = result.user
+                setUser(user)
+                navigate('/')
+                toast.success('Login Successfull')
+            }).catch((err) => {
+                toast.warning(err.message)
+            });
+    }
     return (
         <section className="bg-gray-50 dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8 flex justify-center items-center min-h-screen">
 
@@ -151,7 +160,7 @@ const Registration = () => {
                                 show ? <FaEyeSlash className='h-5 w-5 hover:text-red-600' /> : < FaEye className='h-5 w-5 hover:text-red-600' />
                             }
                         </span>
-                        
+
                     </div><p className='text-red-600'>{error}</p>
 
                     {/* Submit Button */}
@@ -183,6 +192,7 @@ const Registration = () => {
 
                 {/* Google Login Option */}
                 <button
+                    onClick={handleGoogleSignIn}
                     type="button"
                     className="w-full flex justify-center items-center py-2.5 px-4 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 dark:bg-gray-700 dark:text-white dark:border-gray-600 dark:hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 gap-2.5 shadow-sm transition duration-150"
                 >
