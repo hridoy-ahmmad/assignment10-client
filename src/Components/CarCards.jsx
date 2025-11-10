@@ -12,9 +12,11 @@ const CarCards = ({ carData }) => {
         <motion.div
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.8 }}
+            transition={{duration:0.01}}
+            
             style={box}
             className="max-w-full w-full rounded-xl overflow-hidden shadow-xl 
-                       bg-white border-2 border-red-50 hover:border-red-400
+                       bg-white border-2 border-red-50 
                        hover:shadow-2xl hover:shadow-red-400/50 
                         transition duration-300 ease-in-out cursor-pointer"
         >

@@ -58,7 +58,7 @@ const Nav = () => {
     </>
 
     return (
-        <div className=' sticky top-0 z-10  bg-gradient-to-r from-black/80 via-black/20 to-transparent'>
+        <div className=' sticky top-0 z-10  bg-gradient-to-r from-black/70 via-black/70 to-black/70 '>
             <div className="navbar mx-auto max-w-[1140px] flex justify-center items-center p-4 h-25">
                 <div className="navbar-start ">
                     <div className="dropdown">
@@ -86,7 +86,7 @@ const Nav = () => {
                     </ul>
                 </div>
                 <div className="navbar-end cursor-pointer text-white">
-                    <Link className=" bg-[#E83E3F] border-none py-3 px-8 rounded-lg hover:bg-[#f93E3F] transition-colors duration-100">login/SIgnup</Link>
+                    <Link to={'registration'} className=" bg-[#E83E3F] border-none py-3 px-8 rounded-lg hover:bg-[#f93E3F] transition-colors duration-100">login/SIgnup</Link>
                 </div>
             </div>
         </div>

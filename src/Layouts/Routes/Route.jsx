@@ -5,6 +5,7 @@ import AddCar from "../../Pages/AddCar";
 import MyListings from "../../Pages/MyListings";
 import MyBookings from "../../Pages/MyBookings";
 import BrowseCars from "../../Pages/BrowseCars";
+import Registration from "../../Pages/Registration";
 
 export const router = createBrowserRouter([
     {
@@ -32,6 +33,10 @@ export const router = createBrowserRouter([
                 path: 'browseCars',
                 element: <BrowseCars />,
                 loader: () => fetch('http://localhost:3000/cars')
+            },
+            {
+                path:'registration',
+                element:<Registration/>
             }
         ]
 
