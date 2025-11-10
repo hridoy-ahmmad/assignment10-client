@@ -2,16 +2,17 @@ import React, { useContext, useState } from 'react';
 import { FaEye } from 'react-icons/fa6';
 import { FcGoogle } from 'react-icons/fc';
 import { IoEyeOff } from 'react-icons/io5';
-import { Link, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import { auth } from '../Firebase/firebase.config';
 import { toast } from 'react-toastify';
 
 
 const Login = () => {
-    const { provider, setUser, googleLogin } = useContext(AuthContext)
+    const { provider, setUser, googleLogin, loginEmailPassword } = useContext(AuthContext)
     const [show, setShow] = useState(false)
     const navigate = useNavigate()
+    const location = useLocation()
     const handleShowPass = () => {
         setShow(!show)
     }
@@ -35,7 +36,16 @@ const Login = () => {
         e.preventDefault()
         const email = e.target.email.value
         const password = e.target.password.value
-        
+
+        loginEmailPassword(email, password)
+        .then((result) => {
+            const user = result.user
+            console.log(user);
+            navigate(`${location.state? location.state : '/' }`)
+            toast.success('Login Successfull')
+        }).catch((err) => {
+            toast.warning(err.message)
+        });
     }
 
     return (

@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router';
 import logo from '../assets/logo.png'
+import { AuthContext } from '../AuthProvider/AuthProvider';
 
 const Nav = () => {
+    const { user } = useContext(AuthContext)
+    console.log(user);
 
     const navItem = <>
         <li>
@@ -85,8 +88,16 @@ const Nav = () => {
                         }
                     </ul>
                 </div>
-                <div className="navbar-end cursor-pointer text-white">
-                    <Link to={'registration'} className=" bg-[#E83E3F] border-none py-3 px-8 rounded-lg hover:bg-[#f93E3F] transition-colors duration-100">login/SIgnup</Link>
+                <div className="navbar-end cursor-pointer text-white flex gap-2">
+                    
+                    {
+                        user? <img className='rounded-full w-12 h-12 border-2'  src={user.photoURL} alt="" /> : ''
+                    }
+                        
+                    
+                        {
+                            user ? <Link className=" bg-[#E83E3F] border-none py-3 px-8 rounded-lg hover:bg-[#f93E3F] transition-colors duration-100">Log Out</Link> : <Link to={'registration'} className=" bg-[#E83E3F] border-none py-3 px-8 rounded-lg hover:bg-[#f93E3F] transition-colors duration-100">login/SIgnup</Link>
+                        }
                 </div>
             </div>
         </div>
