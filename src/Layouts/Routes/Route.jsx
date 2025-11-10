@@ -9,6 +9,7 @@ import Registration from "../../Pages/Registration";
 import Login from "../../Pages/Login";
 import PrivateRoute from "./PrivateRoute";
 import PageNotFound from "../../Pages/PageNotFound";
+import CarDetails from "../../Pages/CarDetails";
 
 export const router = createBrowserRouter([
     {
@@ -45,6 +46,13 @@ export const router = createBrowserRouter([
                 // loader: () => fetch('http://localhost:3000/cars')
             },
             {
+                path: 'carDetails/:id',
+                element: <PrivateRoute>
+                    <CarDetails></CarDetails>
+                </PrivateRoute>,
+                loader: () => fetch('http://localhost:3000/cars')
+            },
+            {
                 path: 'registration',
                 element: <Registration />
             },
@@ -53,11 +61,11 @@ export const router = createBrowserRouter([
                 element: <Login></Login>
             }
         ]
-        
+
 
     },
     {
-        path:'*',
+        path: '*',
         element: <PageNotFound></PageNotFound>
 
     }

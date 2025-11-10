@@ -13,8 +13,7 @@ const CarCards = ({ carData }) => {
 
     return (
         <motion.div
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.8 }}
+            whileHover={{ scale: 1.05 }}
             transition={{duration:0.01}}
             style={box}
             className="max-w-full w-full rounded-xl overflow-hidden shadow-xl 
@@ -62,7 +61,7 @@ const CarCards = ({ carData }) => {
 
                     {/* View Details Button (Red Vibe) */}
                     <Link
-                       
+                       to={`/carDetails/${carData._id}`}
                         className="px-4 py-2 text-sm font-semibold text-white 
                        bg-red-700 rounded-lg 
                        hover:bg-red-800 focus:outline-none focus:ring-2 
