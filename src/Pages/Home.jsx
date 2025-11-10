@@ -2,6 +2,8 @@ import React from 'react';
 import Slider from '../Components/Slider';
 import { Link, useLoaderData } from 'react-router';
 import CarCards from '../Components/carCards';
+import WhyChoose from '../Components/WhyChoose';
+import Testimonial from '../Components/Testimonial';
 
 const Home = () => {
     const carsData = useLoaderData()
@@ -30,6 +32,9 @@ const Home = () => {
                 </div>
 
             </div>
+
+            <WhyChoose></WhyChoose>
+            <Testimonial></Testimonial>
 
         </div>
     );

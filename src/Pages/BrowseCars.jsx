@@ -8,7 +8,6 @@ const BrowseCars = () => {
 
     return (
         <div className=''>
-
             <div className='relative bg-cover bg-center w-full h-[200px] md:h-[400px] lg:h-[500px] mt-[-150px]'
                 style={
                     {
@@ -19,7 +18,7 @@ const BrowseCars = () => {
 
                 <div className='absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent'></div>
             </div>
-            <div>
+            <div className='mt-10 mb-5'>
                 <h1 className='text-2xl font-extrabold text-red-700 
                uppercase  text-center p-2'>
                     All Cars

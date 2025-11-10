@@ -1,15 +1,22 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router';
 
 const CarCards = ({ carData }) => {
     console.log(carData);
+    const box = {
+    borderRadius: 5,
+}
 
     return (
-        <div
+        <motion.div
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.8 }}
+            style={box}
             className="max-w-full w-full rounded-xl overflow-hidden shadow-xl 
                        bg-white border-2 border-red-50 hover:border-red-400
                        hover:shadow-2xl hover:shadow-red-400/50 
-                       hover:scale-[1.01] transition duration-300 ease-in-out cursor-pointer"
+                        transition duration-300 ease-in-out cursor-pointer"
         >
             {/* Car Image Section */}
             <div className="h-44">
@@ -62,7 +69,7 @@ const CarCards = ({ carData }) => {
                     </Link>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 
