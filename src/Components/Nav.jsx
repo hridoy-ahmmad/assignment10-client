@@ -138,7 +138,7 @@ const Nav = () => {
                         user ?
                             <Link
                                 onClick={handleSignOut}
-                                className=" bg-[#E83E3F] border-none py-3 px-8 rounded-lg hover:bg-[#f93E3F] transition-colors duration-100">Log Out</Link> : <Link to={'registration'} className=" bg-[#E83E3F] border-none py-3 px-8 rounded-lg hover:bg-[#f93E3F] transition-colors duration-100">login/SIgnup</Link>
+                                className=" bg-[#E83E3F] border-none py-3 px-8 rounded-lg hover:bg-[#f93E3F] transition-colors duration-100">Log Out</Link> : <Link to={'registration'} className=" bg-[#E83E3F] border-none py-3 px-8 rounded-lg hover:bg-[#f93E3F] transition-colors duration-100">login or Signup</Link>
                     }
 
                 </div>

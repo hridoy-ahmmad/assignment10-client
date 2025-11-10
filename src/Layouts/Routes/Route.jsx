@@ -8,6 +8,7 @@ import BrowseCars from "../../Pages/BrowseCars";
 import Registration from "../../Pages/Registration";
 import Login from "../../Pages/Login";
 import PrivateRoute from "./PrivateRoute";
+import PageNotFound from "../../Pages/PageNotFound";
 
 export const router = createBrowserRouter([
     {
@@ -52,6 +53,12 @@ export const router = createBrowserRouter([
                 element: <Login></Login>
             }
         ]
+        
+
+    },
+    {
+        path:'*',
+        element: <PageNotFound></PageNotFound>
 
     }
 ])
