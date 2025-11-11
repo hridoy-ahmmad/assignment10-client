@@ -15,14 +15,14 @@ const BrowseCars = () => {
                 setLoading(false)
             }
             )
-            .catch(()=>{
+            .catch(() => {
                 setLoading(true)
             })
     }, [])
 
-if(loading){
-    return <Loading></Loading>
-}
+    if (loading) {
+        return <Loading></Loading>
+    }
 
 
 
@@ -38,7 +38,7 @@ if(loading){
                 <p className='text-black text-center'>Find the perfect ride for your next journey.</p>
             </div>
 
-            <div className='grid lg:grid-cols-3 2 md:grid-cols-2  gap-4 p-4 mx-auto max-w-[1140px]'>
+            <div className='grid lg:grid-cols-3 2 md:grid-cols-2  gap-4 p-4 mx-auto max-w-7xl'>
                 {
                     carsData.map(carData => <CarCards key={carData._id} carData={carData}></CarCards>)
                 }

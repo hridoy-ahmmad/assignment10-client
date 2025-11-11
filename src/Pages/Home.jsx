@@ -32,7 +32,7 @@ const Home = () => {
         <div>
             <Slider></Slider>
 
-            <div className='mx-auto max-w-[1140px]'>
+            <div className='mx-auto max-w-7xl'>
                 <div className='mt-10 mb-5'>
                     <h1 className='text-2xl font-extrabold text-red-700 
                uppercase  text-center p-2'>

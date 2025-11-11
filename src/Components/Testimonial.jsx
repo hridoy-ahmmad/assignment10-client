@@ -2,10 +2,10 @@ import React from 'react';
 import { IoStarSharp } from 'react-icons/io5';
 
 const Testimonial = () => {
-    return (
-        <section className="bg-gray-100 py-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-[1140px] mx-auto">
-        
+  return (
+    <section className="bg-gray-100 py-16 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+
         {/* Section Header */}
         <div className="text-center mb-12">
           <h2 className="text-4xl font-extrabold text-gray-900 sm:text-5xl">
@@ -18,13 +18,13 @@ const Testimonial = () => {
 
         {/* Testimonials Grid Container */}
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 ">
-          
+
           {/* Testimonial Card 1 */}
           <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 flex flex-col justify-between">
             <div className="flex items-center mb-4">
-              <img 
-                className="h-12 w-12 rounded-full object-cover" 
-                src={'https://i.ibb.co.com/Y7NzH613/Outdoors-man-portrait-cropped.jpg'} 
+              <img
+                className="h-12 w-12 rounded-full object-cover"
+                src={'https://i.ibb.co.com/Y7NzH613/Outdoors-man-portrait-cropped.jpg'}
                 alt="Customer Avatar"
               />
               <div className="ml-4">
@@ -47,9 +47,9 @@ const Testimonial = () => {
           {/* Testimonial Card 2 */}
           <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 flex flex-col justify-between">
             <div className="flex items-center mb-4">
-              <img 
-                className="h-12 w-12 rounded-full object-cover" 
-                src={'https://i.ibb.co.com/HLnGb52q/istockphoto-1335941248-612x612.jpg'} 
+              <img
+                className="h-12 w-12 rounded-full object-cover"
+                src={'https://i.ibb.co.com/HLnGb52q/istockphoto-1335941248-612x612.jpg'}
                 alt="Customer Avatar"
               />
               <div className="ml-4">
@@ -72,8 +72,8 @@ const Testimonial = () => {
           {/* Testimonial Card 3 */}
           <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 flex flex-col justify-between">
             <div className="flex items-center mb-4">
-              <img 
-                className="h-12 w-12 rounded-full object-cover" 
+              <img
+                className="h-12 w-12 rounded-full object-cover"
                 src="https://randomuser.me/api/portraits/women/68.jpg" // Placeholder image
                 alt="Customer Avatar"
               />
@@ -97,8 +97,8 @@ const Testimonial = () => {
           {/* Testimonial Card 4 */}
           <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 flex flex-col justify-between">
             <div className="flex items-center mb-4">
-              <img 
-                className="h-12 w-12 rounded-full object-cover" 
+              <img
+                className="h-12 w-12 rounded-full object-cover"
                 src="https://randomuser.me/api/portraits/men/77.jpg" // Placeholder image
                 alt="Customer Avatar"
               />
@@ -122,8 +122,8 @@ const Testimonial = () => {
           {/* Testimonial Card 5 */}
           <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 flex flex-col justify-between">
             <div className="flex items-center mb-4">
-              <img 
-                className="h-12 w-12 rounded-full object-cover" 
+              <img
+                className="h-12 w-12 rounded-full object-cover"
                 src="https://randomuser.me/api/portraits/women/90.jpg" // Placeholder image
                 alt="Customer Avatar"
               />
@@ -147,8 +147,8 @@ const Testimonial = () => {
           {/* Testimonial Card 6 */}
           <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 flex flex-col justify-between">
             <div className="flex items-center mb-4">
-              <img 
-                className="h-12 w-12 rounded-full object-cover" 
+              <img
+                className="h-12 w-12 rounded-full object-cover"
                 src="https://randomuser.me/api/portraits/men/19.jpg" // Placeholder image
                 alt="Customer Avatar"
               />
@@ -172,7 +172,7 @@ const Testimonial = () => {
         </div>
       </div>
     </section>
-    );
+  );
 };
 
 export default Testimonial;

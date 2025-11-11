@@ -96,7 +96,7 @@ const Nav = () => {
 
     return (
         <div className='relative sticky top-0 z-10 h-[100px]  bg-gradient-to-r from-black/70 via-black/70 to-black/70 '>
-            <div className="navbar mx-auto max-w-[1140px] flex justify-center items-center p-4 h-25">
+            <div className="navbar mx-auto max-w-7xl flex justify-center items-center p-4 h-25">
                 <div className="navbar-start ">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -123,6 +123,7 @@ const Nav = () => {
                                 navItem
                             }
                         </ul>
+
                     </div>
 
                     <div className=''>
@@ -138,36 +139,36 @@ const Nav = () => {
                     </div>
                     {
                         user ?
-                            '' : <Link to={'registration'} className="  bg-red-700 border-none py-3 px-8 rounded-sm hover:bg-red-800 hover:shadow-xl transition duration-300">login or Signup</Link>
+                            '' : <Link to={'registration'} className="  bg-red-700 border-none py-3 px-2 rounded-sm hover:bg-red-800 hover:shadow-xl transition duration-300">login or Signup</Link>
                     }
 
                 </div>
+                <div className='absolute  lg:right-0 top-20'>
+                    {modal &&
+                        <div className="bg-gradient-to-r from-black/70  to-red-400 p-6 rounded-xl shadow-lg w-72 text-white flex flex-col items-center gap-4">
+                            <h1 className="text-xl font-bold truncate text-center">{user.displayName}</h1>
+                            <h2 className="text-sm font-medium text-red-100 truncate text-center">{user.email}</h2>
 
+                            <Link
+                                to="/"
+                                onClick={handleSignOut}
+                                className="w-full text-center bg-red-700 hover:bg-red-800 transition-colors duration-200 py-2 px-5 rounded-lg font-semibold shadow-md"
+                            >
+                                Log Out
+                            </Link>
+
+                            <button
+                                onClick={() => setModal(false)}
+                                className="w-full text-center bg-red-500 hover:bg-red-600 transition-colors duration-200 py-2 px-3 rounded-lg font-semibold"
+                            >
+                                Close
+                            </button>
+                        </div>
+
+                    }
+                </div>
             </div>
-            <div className='absolute  lg:right-60'>
-                {modal &&
-                    <div className="bg-gradient-to-r from-black/70  to-red-400 p-6 rounded-xl shadow-lg w-72 text-white flex flex-col items-center gap-4">
-                        <h1 className="text-xl font-bold truncate text-center">{user.displayName}</h1>
-                        <h2 className="text-sm font-medium text-red-100 truncate text-center">{user.email}</h2>
 
-                        <Link
-                            to="/"
-                            onClick={handleSignOut}
-                            className="w-full text-center bg-red-700 hover:bg-red-800 transition-colors duration-200 py-2 px-5 rounded-lg font-semibold shadow-md"
-                        >
-                            Log Out
-                        </Link>
-
-                        <button
-                            onClick={() => setModal(false)}
-                            className="w-full text-center bg-red-500 hover:bg-red-600 transition-colors duration-200 py-2 px-3 rounded-lg font-semibold"
-                        >
-                            Close
-                        </button>
-                    </div>
-
-                }
-            </div>
         </div>
     );
 };

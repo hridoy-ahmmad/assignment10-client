@@ -35,8 +35,8 @@ const AddCar = () => {
             .then(res => res.json())
             .then(data => {
                 console.log((data));
-                toast.success('succes')
-                navigate('/myListings')
+                toast.success('Car added successfully. See My listings')
+                navigate('/')
 
             })
             .catch(err => {

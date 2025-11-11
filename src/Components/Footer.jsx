@@ -9,8 +9,8 @@ const Footer = () => {
         >
             {/* overlay */}
             <div className='absolute inset-0 bg-[#000303da]'></div>
-            
-            <div className='relative z-10 mx-auto max-w-[1140px]'>
+
+            <div className='relative z-10 mx-auto max-w-7xl'>
                 <footer className="footer footer-horizontal footer-center lg:h-[300px] text-primary-content p-10 grid grid-cols-1 lg:grid-cols-3 gap-10 justify-between">
                     {/* Logo + description */}
                     <aside className='text-start flex flex-col items-start'>
