@@ -25,6 +25,11 @@ const Registration = () => {
         const URL = e.target.photoURL.value
         const password = e.target.password.value
 
+        const newUser = {
+            name, email, URL
+        }
+
+
         // Password Validation
         const passLenght = password.length >= 6
         const uppercase = /[A-Z]/
@@ -44,6 +49,18 @@ const Registration = () => {
         }
         createUSer(email, password)
             .then((result) => {
+                   fetch('http://localhost:3000/users', {
+                    method: 'POST',
+                    headers: {
+                        'Content-type': 'Application/json'
+                    },
+                    body: JSON.stringify(newUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+
+                    })
                 const user = result.user
                 updateUser({
                     displayName: name,
@@ -64,8 +81,30 @@ const Registration = () => {
     }
     const handleGoogleSignIn = (e) => {
         e.preventDefault()
+
+
         googleLogin(auth, provider)
             .then((result) => {
+
+                const newUser = {
+                    name: result.user.displayName,
+                    email: result.user.email,
+                    URL: result.user.photoURL
+                }
+
+                fetch('http://localhost:3000/users', {
+                    method: 'POST',
+                    headers: {
+                        'Content-type': 'Application/json'
+                    },
+                    body: JSON.stringify(newUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+
+                    })
+
                 const user = result.user
                 setUser(user)
                 navigate('/')
@@ -129,7 +168,7 @@ const Registration = () => {
                     {/* Photo URL Field */}
                     <div>
                         <label
-                            
+
                             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                         >
                             Photo URL (Optional)

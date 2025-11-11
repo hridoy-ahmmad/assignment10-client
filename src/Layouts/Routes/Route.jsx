@@ -19,7 +19,7 @@ export const router = createBrowserRouter([
             {
                 index: true,
                 element: <Home />,
-                loader: () => fetch('http://localhost:3000/cars')
+                loader: () => fetch('http://localhost:3000/latest_cars')
             },
             {
                 path: 'addCar',
@@ -32,7 +32,10 @@ export const router = createBrowserRouter([
                 path: 'myListings',
                 element: <PrivateRoute>
                     <MyListings />
-                </PrivateRoute>
+                </PrivateRoute>,
+                
+
+
             },
             {
                 path: 'myBookings',

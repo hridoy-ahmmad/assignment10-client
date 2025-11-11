@@ -11,7 +11,7 @@ const Home = () => {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        fetch('http://localhost:3000/cars')
+        fetch('http://localhost:3000/latest_cars')
             .then(res => res.json())
             .then(data => {
                 setCarsData(data)
@@ -43,7 +43,7 @@ const Home = () => {
 
                 <div className='grid lg:grid-cols-3 lg:grid-rows-2 md:grid-cols-2 md:grid-rows-3 gap-4 p-4'>
                     {
-                        carsData.slice(0, 6).map(carData => <CarCards key={carData._id} carData={carData}></CarCards>)
+                        carsData.map(carData => <CarCards key={carData._id} carData={carData}></CarCards>)
                     }
                 </div>
                 <div className=" cursor-pointer text-white my-10 flex justify-center items-center">

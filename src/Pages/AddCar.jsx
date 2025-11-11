@@ -20,7 +20,8 @@ const AddCar = () => {
             providerName: e.target.providerName.value,
             providerEmail: e.target.providerEmail.value,
             status: e.target.status.value,
-            carTypeOrModel: e.target.model.value
+            carTypeOrModel: e.target.model.value,
+            date: new Date()
         }
 
         // console.log(newCarInfo);
