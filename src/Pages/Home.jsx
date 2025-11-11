@@ -47,7 +47,7 @@ const Home = () => {
                     }
                 </div>
                 <div className=" cursor-pointer text-white my-10 flex justify-center items-center">
-                    <Link to={'browseCars'} className=" bg-[#E83E3F] border-none py-3 px-8 rounded-lg hover:bg-[#f93E3F] transition-colors duration-100 hover:scale-[1.03]">Browse All</Link>
+                    <Link to={'browseCars'} className="  bg-red-700 border-none py-3 px-8 rounded-sm hover:bg-red-800 hover:shadow-xl transition duration-300">Browse All</Link>
                 </div>
 
             </div>

@@ -46,7 +46,7 @@ const Slider = () => {
                             /></h1>
                         <p className='text-start z-10 text-xl'>Find the perfect car that suits your style and budget at TurboTrack.</p>
                         <div className="navbar-end flex lg:justify-start z-10 cursor-pointer text-white">
-                            <Link className=" bg-[#E83E3F] border-none py-3 px-8 rounded-lg hover:bg-[#f93E3F] transition-colors duration-100">Browse cars</Link>
+                            <Link className="  bg-red-700 border-none py-3 px-8 rounded-sm hover:bg-red-800 hover:shadow-xl transition duration-300">Browse cars</Link>
                         </div>
                     </div>
                 </div>
@@ -80,7 +80,7 @@ const Slider = () => {
                             /></h1>
                         <p className='text-start z-10 text-xl'>List your car in minutes and reach thousands of potential buyers.</p>
                         <div className="navbar-end flex lg:justify-start z-10 cursor-pointer text-white">
-                            <Link className=" bg-[#E83E3F] border-none py-3 px-8 rounded-lg hover:bg-[#f93E3F] transition-colors duration-100">Make your List</Link>
+                            <Link className="  bg-red-700 border-none py-3 px-8 rounded-sm hover:bg-red-800 hover:shadow-xl transition duration-300">Make your List</Link>
                         </div>
                     </div>
                 </div>
@@ -113,7 +113,7 @@ const Slider = () => {
                             /></h1>
                         <p className='text-start z-10 text-xl'>Browse cars and book your favorite ride hassle-free.</p>
                         <div className="navbar-end flex lg:justify-start z-10 cursor-pointer text-white">
-                            <Link className=" bg-[#E83E3F] border-none py-3 px-8 rounded-lg hover:bg-[#f93E3F] transition-colors duration-100">Browse cars</Link>
+                            <Link className="  bg-red-700 border-none py-3 px-8 rounded-sm hover:bg-red-800 hover:shadow-xl transition duration-300">Browse cars</Link>
                         </div>
                     </div>
                 </div>

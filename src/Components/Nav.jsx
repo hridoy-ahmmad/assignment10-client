@@ -34,7 +34,7 @@ const Nav = () => {
                             });
                         }
                     });
-            
+
         }).catch(() => {
 
         });
@@ -115,30 +115,30 @@ const Nav = () => {
                         <a className=" text-xl text-red-500 font-extrabold ml-2">TurboTrack</a>
                     </Link>
                 </div>
-                <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1">
-                        {
-                            navItem
-                        }
-                    </ul>
-                </div>
+
                 <div className="navbar-end cursor-pointer text-white flex gap-2">
+                    <div className="navbar-center hidden lg:flex">
+                        <ul className="menu menu-horizontal px-1">
+                            {
+                                navItem
+                            }
+                        </ul>
+                    </div>
+
                     <div className=''>
                         {
                             user &&
                             <img
+                                referrerPolicy='no-referrer'
                                 onClick={() => setModal(!modal)}
                                 className='rounded-full w-12 h-12 border-2' src={user.photoURL} alt="" />
                         }
 
 
-
                     </div>
                     {
                         user ?
-                            <Link
-                                onClick={handleSignOut}
-                                className=" bg-[#E83E3F] border-none py-3 px-8 rounded-lg hover:bg-[#f93E3F] transition-colors duration-100">Log Out</Link> : <Link to={'registration'} className=" bg-[#E83E3F] border-none py-3 px-8 rounded-lg hover:bg-[#f93E3F] transition-colors duration-100">login or Signup</Link>
+                            '' : <Link to={'registration'} className="  bg-red-700 border-none py-3 px-8 rounded-sm hover:bg-red-800 hover:shadow-xl transition duration-300">login or Signup</Link>
                     }
 
                 </div>
