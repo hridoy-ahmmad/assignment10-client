@@ -1,6 +1,46 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../AuthProvider/AuthProvider';
+import { useLoaderData } from 'react-router';
+import { toast } from 'react-toastify';
 
 const Updatecar = () => {
+    const { user } = useContext(AuthContext)
+    const data = useLoaderData()
+    console.log(data);
+
+    const { _id, carName, description, category, rentPricePerDay, status, location, carTypeOrModel } = data
+    const handleUpdate = e => {
+
+        e.preventDefault()
+        const rentPrice = parseInt(e.target.rentPrice.value)
+        const updateCarInfo = {
+            carName: e.target.carName.value,
+            description: e.target.description.value,
+            category: e.target.category.value,
+            rentPricePerDay: rentPrice,
+            location: e.target.location.value,
+            imageUrl: e.target.imageUrl.value,
+            status: e.target.status.value,
+            carTypeOrModel: e.target.model.value,
+        }
+        fetch(`http://localhost:3000/cars/${_id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(updateCarInfo)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log((data));
+                toast.success('Car added successfully. See My listings')
+            })
+            .catch(err => {
+                console.log(err);
+
+            })
+    }
+
     return (
         <div>
             <div className=" bg-gray-50 p-8 flex items-center justify-center">
@@ -8,11 +48,11 @@ const Updatecar = () => {
 
                     {/* Header with Red Accent */}
                     <h2 className="text-3xl font-bold mb-6  text-red-700 border-b pb-3">
-                        List Your Rental Car
+                        Update Your car Information
                     </h2>
 
                     <form
-                        // onSubmit={handleSubmit}
+                        onSubmit={handleUpdate}
                         className="space-y-5 text-black/80">
 
                         {/* Car Name */}
@@ -22,7 +62,7 @@ const Updatecar = () => {
                             </label>
                             <input
                                 type="text"
-
+                                defaultValue={carName}
                                 name="carName"
                                 placeholder="e.g., Tesla Model 3"
                                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 transition duration-150"
@@ -37,6 +77,7 @@ const Updatecar = () => {
                             <input
                                 type="text"
                                 name="model"
+                                defaultValue={carTypeOrModel}
                                 placeholder="e.g., Leaf e+ 62kWh"
                                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 transition duration-150"
 
@@ -50,6 +91,7 @@ const Updatecar = () => {
                             </label>
                             <textarea
                                 id="description"
+                                defaultValue={description}
                                 name="description"
                                 rows="3"
                                 placeholder="A brief, professional description of the car."
@@ -65,6 +107,7 @@ const Updatecar = () => {
                             </label>
                             <select
                                 id="category"
+                                defaultValue={category}
                                 name="category"
                                 className="mt-1 block w-full bg-white border border-gray-300 text-gray-900 py-2 px-3 rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 transition duration-150"
                                 required
@@ -85,6 +128,7 @@ const Updatecar = () => {
                             <select
 
                                 name="status"
+                                defaultValue={status}
                                 className="mt-1 block w-full bg-white border border-gray-300 text-gray-900 py-2 px-3 rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 transition duration-150"
                                 required
                             >
@@ -105,6 +149,7 @@ const Updatecar = () => {
                                 </div>
                                 <input
                                     type="number"
+                                    defaultValue={rentPricePerDay}
                                     name="rentPrice"
                                     className="mt-1 text-black/80 w-full pl-7 pr-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 transition duration-150"
                                 />
@@ -118,6 +163,7 @@ const Updatecar = () => {
                             </label>
                             <input
                                 type="text"
+                                defaultValue={location}
                                 id="location"
                                 name="location"
                                 placeholder="City, State/Region"
@@ -133,6 +179,7 @@ const Updatecar = () => {
                             </label>
                             <input
                                 type="url"
+
                                 id="imageUrl"
                                 name="imageUrl"
                                 placeholder="https://example.com/car-image.jpg"
@@ -155,7 +202,7 @@ const Updatecar = () => {
                                     id="providerName"
                                     name="providerName"
                                     readOnly
-                                    // value={user.displayName}
+                                    value={user.displayName}
                                     className="mt-1 block w-full px-3 py-2 border border-gray-300 cursor-not-allowed bg-gray-100 text-gray-500 rounded-md "
                                 />
                             </div>
@@ -169,7 +216,7 @@ const Updatecar = () => {
                                     type="email"
                                     name="providerEmail"
                                     readOnly
-                                    // value={user.email}
+                                    value={user.email}
                                     className="mt-1 block w-full px-3 py-2 border border-gray-300 cursor-not-allowed bg-gray-100 text-gray-500 rounded-md "
                                 />
                             </div>
@@ -181,7 +228,7 @@ const Updatecar = () => {
                                 type="submit"
                                 className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition duration-150"
                             >
-                                Add Car
+                                Update Car
                             </button>
                         </div>
                     </form>

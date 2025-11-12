@@ -20,7 +20,7 @@ export const router = createBrowserRouter([
             {
                 index: true,
                 element: <Home />,
-                loader: () => fetch('http://localhost:3000/latest_cars')
+                // loader: () => fetch('http://localhost:3000/latest_cars')
             },
             {
                 path: 'addCar',
@@ -34,7 +34,7 @@ export const router = createBrowserRouter([
                 element: <PrivateRoute>
                     <MyListings />
                 </PrivateRoute>,
-                
+
 
 
             },
@@ -47,20 +47,23 @@ export const router = createBrowserRouter([
             {
                 path: 'browseCars',
                 element: <BrowseCars />,
-                // loader: () => fetch('http://localhost:3000/cars')
+                loader: () => fetch('http://localhost:3000/cars')
             },
             {
                 path: 'carDetails/:id',
                 element: <PrivateRoute>
                     <CarDetails></CarDetails>
                 </PrivateRoute>,
-                loader: () => fetch('http://localhost:3000/cars')
+                loader: ({ params }) => fetch(`http://localhost:3000/cars/${params.id}`)
+
             },
             {
-                path:'updateCar',
-                element:<PrivateRoute>
+                path: 'updateCar/:id',
+                element: <PrivateRoute>
                     <Updatecar></Updatecar>
-                </PrivateRoute>
+                </PrivateRoute>,
+                loader: ({ params }) => fetch(`http://localhost:3000/cars/${params.id}`)
+
             },
             {
                 path: 'registration',

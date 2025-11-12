@@ -10,7 +10,7 @@ const Nav = () => {
     const { user, logOut } = useContext(AuthContext)
     const [modal, setModal] = useState(false)
     const navigate = useNavigate()
-    console.log(user);
+    // console.log(user);
 
     const handleSignOut = () => {
         Swal.fire({

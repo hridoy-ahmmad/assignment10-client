@@ -9,8 +9,6 @@ const CarCards = ({ carData }) => {
         borderRadius: 5,
     }
 
-
-
     return (
         <motion.div
             whileHover={{ scale: 1.05 }}

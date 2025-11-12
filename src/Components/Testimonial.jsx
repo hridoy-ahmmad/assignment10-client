@@ -41,6 +41,7 @@ const Testimonial = () => {
               <IoStarSharp />
               <IoStarSharp />
               <IoStarSharp />
+              <IoStarSharp />
             </div>
           </div>
 
@@ -62,6 +63,7 @@ const Testimonial = () => {
             </p>
             <div className="mt-4 flex  justify-end text-yellow-500">
               {/* Star Rating Placeholder */}
+              <IoStarSharp />
               <IoStarSharp />
               <IoStarSharp />
               <IoStarSharp />
@@ -91,6 +93,7 @@ const Testimonial = () => {
               <IoStarSharp />
               <IoStarSharp />
               <IoStarSharp />
+              <IoStarSharp />
             </div>
           </div>
 
@@ -112,6 +115,7 @@ const Testimonial = () => {
             </p>
             <div className="mt-4 flex justify-end text-yellow-500">
               {/* Star Rating Placeholder */}
+              <IoStarSharp />
               <IoStarSharp />
               <IoStarSharp />
               <IoStarSharp />
@@ -141,6 +145,7 @@ const Testimonial = () => {
               <IoStarSharp />
               <IoStarSharp />
               <IoStarSharp />
+              <IoStarSharp />
             </div>
           </div>
 
@@ -162,6 +167,7 @@ const Testimonial = () => {
             </p>
             <div className="mt-4 flex justify-end text-yellow-500">
               {/* Star Rating Placeholder */}
+              <IoStarSharp />
               <IoStarSharp />
               <IoStarSharp />
               <IoStarSharp />

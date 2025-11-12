@@ -124,7 +124,7 @@ const MyListings = () => {
 
                             <div class="md:col-span-2  text-left md:text-right flex justify-end gap-2 pt-2 border-t md:border-t-0">
                                 <Link
-                                to={'/updateCar'} class="text-center bg-green-700 hover:bg-green-800 transition-colors duration-200 py-2 px-5 rounded-lg font-semibold shadow-md">
+                                to={`/updateCar/${myCar._id}`} class="text-center bg-green-700 hover:bg-green-800 transition-colors duration-200 py-2 px-5 rounded-lg font-semibold shadow-md">
                                     Update
                                 </Link>
                                 <button
