@@ -1,4 +1,4 @@
-import React, { useContext, } from 'react';
+import React, { useContext, useState, } from 'react';
 import { useLoaderData, } from 'react-router';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../AuthProvider/AuthProvider';
@@ -6,13 +6,18 @@ import { FaEnvelope, FaTag, FaUserTie } from 'react-icons/fa6';
 import { IoLocation } from 'react-icons/io5';
 import Loading from './Loading';
 
+import Animation from "../animation/Success.json"
+import Lottie from 'lottie-react';
+
+
 const CarDetails = () => {
-     const { user } = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
+    const [success, setSuccess] = useState(false)
     const data = useLoaderData()
-   
+
     console.log(data);
 
-    const { carName, description, category, rentPricePerDay, status, location, imageUrl, providerName, providerEmail, } = data
+    const { carName, description, category, rentPricePerDay, status, location, imageUrl, providerName, providerEmail, _id } = data
 
     const handleBookCars = () => {
         const bookedCarsInfo = {
@@ -22,7 +27,7 @@ const CarDetails = () => {
             rentPricePerDay,
             location,
             imageUrl,
-            status: 'Booked',
+            status: 'Unavailable',
             email: user.email,
             providerEmail,
             date: new Date(),
@@ -40,29 +45,42 @@ const CarDetails = () => {
                 console.log('Booking saved:', data);
                 if (data.insertedId) {
                     toast.success('You have successfully booked a ride')
-
+                    setSuccess(true)
+                    setTimeout(() => setSuccess(false), 3000)
                 } else {
                     toast.warning('The car has already booked')
                 }
             })
             .catch(err => {
                 console.log(err);
-
                 toast.warning('The car has already booked')
             }
-
             )
+        fetch(`http://localhost:3000/status/${_id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            // body: JSON.stringify({status:'Booked'})   
+        })
     };
-
-    if(!data){
+    if (!data) {
         return <Loading></Loading>
     }
-
     return (
         <div className=''>
             <div className="max-w-7xl mx-auto p-4 md:p-8 bg-gray-50">
                 <div className="bg-white shadow-xl rounded-xl overflow-hidden">
-
+                    {/* Lottie animation overlay */}
+                    {success && (
+                        <div className="fixed inset-0 bg-black/70 flex justify-center items-center z-50">
+                            <Lottie
+                                animationData={Animation}
+                                loop={false}
+                                style={{ width: 300, height: 300 }}
+                            />
+                        </div>
+                    )}
                     {/* Image Section: Adjusted height for better mobile viewing (h-64 on small, h-96 on md+) */}
                     <div className="h-64 md:h-96 w-full ">
                         <img
@@ -95,11 +113,11 @@ const CarDetails = () => {
 
                             {/* Status */}
                             <div className="flex items-center space-x-3">
-                                <div className={`w-3 h-3 rounded-full ${status === 'Available' ? 'bg-green-500' : 'bg-yellow-500'}`}></div>
+
                                 <p className="text-base sm:text-lg font-semibold text-gray-700">
                                     Status: <span className="font-bold">
-                                         {status}
-                                          </span>
+                                        {status}
+                                    </span>
                                 </p>
                             </div>
 
@@ -108,7 +126,7 @@ const CarDetails = () => {
                                 <FaTag className="text-blue-500 text-xl" />
                                 <p className="text-base sm:text-lg font-semibold text-gray-700">
                                     Category: <span className="font-bold">
-                                        {/* {category} */}
+                                        {category}
                                     </span>
                                 </p>
                             </div>
@@ -117,9 +135,9 @@ const CarDetails = () => {
                             <div className="flex items-center space-x-3">
                                 <IoLocation className="text-red-500 text-xl" />
                                 <p className="text-base sm:text-lg font-semibold text-gray-700">
-                                    Location: <span className="font-bold"> 
-                                        {location} 
-                                        </span>
+                                    Location: <span className="font-bold">
+                                        {location}
+                                    </span>
                                 </p>
                             </div>
                         </div>

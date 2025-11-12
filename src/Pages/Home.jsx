@@ -30,7 +30,8 @@ const Home = () => {
         return <Loading></Loading>
     }
 
-
+    const searchedCars = carsData.filter(car =>
+    car.carName.toLowerCase().includes(search.toLowerCase()))
 
 
     return (
@@ -44,13 +45,33 @@ const Home = () => {
                     <p className="mt-3 max-w-2xl mx-auto text-xl text-gray-600 sm:mt-4">
                         Find the perfect ride for your next journey.</p>
                 </div>
-               
-                
+                {/* Search Car */}
+                <div class="max-w-xl mx-auto p-4">
+                    <form action="#" method="GET" class="relative">
+
+                        <div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-gray-600">
+                           <IoSearch  />
+                        </div>
+
+                        <input
+                            type="search"
+                            name="search"
+                            onChange={(e) => setSearch(e.target.value)}
+                            placeholder="Search cars by name"
+                            class="w-full py-3 pl-12 pr-4 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-full 
+                   shadow-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-300"
+                            aria-label="Search"
+                        />
+
+                    </form>
+                </div>
 
                 <div className='grid lg:grid-cols-3 lg:grid-rows-2 md:grid-cols-2 md:grid-rows-3 gap-4 p-4'>
-                    { 
-                        carsData.map(carData => <CarCards key={carData._id} carData={carData}></CarCards>) 
-                         
+                    { searchedCars.length>0 ? (
+                        carsData.map(carData => <CarCards key={carData._id} carData={carData}></CarCards>)) : 
+                         <div className='col-span-full'>
+                            <NoSearchFound></NoSearchFound>
+                        </div>
                     }
                 </div>
                 <div className=" cursor-pointer text-white my-10 flex justify-center items-center">

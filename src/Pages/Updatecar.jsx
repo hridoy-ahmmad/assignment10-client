@@ -40,7 +40,6 @@ const Updatecar = () => {
 
             })
     }
-
     return (
         <div>
             <div className=" bg-gray-50 p-8 flex items-center justify-center">

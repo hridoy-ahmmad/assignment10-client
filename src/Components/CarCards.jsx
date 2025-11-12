@@ -1,10 +1,9 @@
-import React from 'react';
+import React, {  } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router';
 import Loading from '../Pages/Loading';
 
 const CarCards = ({ carData }) => {
-    console.log(carData);
     const box = {
         borderRadius: 5,
     }
@@ -28,18 +27,12 @@ const CarCards = ({ carData }) => {
                     alt={carData.name}
                 />
                 {/* badge */}
-                {
-                    <div className='absolute top-2 right-2'>
-                        {
-                            carData.status === 'Available' && <div className="badge  badge-primary rounded-xl px-4 border-4 font-extrabold "> {carData.status} </div>
-                        }
-                        {
-                            carData.status === 'Booked' && <div className="badge  badge-info rounded-xl px-4 font-extrabold text-white"> {carData.status} </div>
-                        }
-                    </div>
-                }
-            </div>
 
+                <div className='absolute top-2 right-2 bg-amber-300 p-4 text-black'>
+                    {carData.status}
+                </div>
+
+            </div>
             <div className="p-5">
                 {/* Car Name */}
                 <h3 className="text-xl font-bold text-gray-800 mb-2 ">
