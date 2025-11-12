@@ -1,9 +1,55 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaEnvelope, FaTag, FaUserTie } from 'react-icons/fa6';
 import { IoLocation } from 'react-icons/io5';
+import { toast } from 'react-toastify';
+import { AuthContext } from '../AuthProvider/AuthProvider';
+import { data } from 'react-router';
 
 const CarDetailCard = ({ carInfo }) => {
-    const { carName, carTypeOrModel, description, category, rentPricePerDay, status, location, imageUrl, providerName, providerEmail } = carInfo
+    const {user} =useContext(AuthContext)
+    const { carName, description, category, rentPricePerDay, status, location, imageUrl, providerName, providerEmail, } = carInfo
+
+    const handleBookCars = () => {
+        const bookedCarsInfo = {
+            carId: carInfo._id,
+            carName,
+            category,
+            rentPricePerDay,
+            location,
+            imageUrl,
+            status:'Booked',
+            email:user.email,
+            providerEmail,
+            date: new Date(),
+        };
+
+        fetch('http://localhost:3000/bookedCars', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(bookedCarsInfo)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log('Booking saved:', data);
+                if (data.insertedId) {
+                    toast.success('You have successfully booked a ride')
+
+                } else {
+                    toast.warning('The car has already booked')
+                }
+            })
+            .catch(err =>{
+                console.log(err);
+                
+                    toast.warning('The car has already booked')
+            }
+                
+            )
+    };
+
+
     return (
         <div>
             <div className="max-w-7xl mx-auto p-4 md:p-8 bg-gray-50">
@@ -91,7 +137,7 @@ const CarDetailCard = ({ carInfo }) => {
                         {/* Book Now Button: Already responsive with w-full on mobile and smaller widths on md+ */}
                         <div className="text-center">
                             <button
-                                // onClick={() => alert(`Initiating booking for ${carName}...`)}
+                                onClick={handleBookCars}
                                 className="w-full md:w-1/2 lg:w-1/3 px-8 py-4 text-lg sm:text-xl font-bold text-white
                                            bg-red-700 rounded-xl shadow-lg
                                            hover:bg-red-800 hover:shadow-xl transition duration-300

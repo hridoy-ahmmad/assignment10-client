@@ -10,6 +10,7 @@ import Login from "../../Pages/Login";
 import PrivateRoute from "./PrivateRoute";
 import PageNotFound from "../../Pages/PageNotFound";
 import CarDetails from "../../Pages/CarDetails";
+import Updatecar from "../../Pages/Updatecar";
 
 export const router = createBrowserRouter([
     {
@@ -54,6 +55,12 @@ export const router = createBrowserRouter([
                     <CarDetails></CarDetails>
                 </PrivateRoute>,
                 loader: () => fetch('http://localhost:3000/cars')
+            },
+            {
+                path:'updateCar',
+                element:<PrivateRoute>
+                    <Updatecar></Updatecar>
+                </PrivateRoute>
             },
             {
                 path: 'registration',
