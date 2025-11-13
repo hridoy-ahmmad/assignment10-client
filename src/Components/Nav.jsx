@@ -144,7 +144,7 @@ const Nav = () => {
 
                 </div>
                 <div className='absolute  lg:right-0 top-20'>
-                    {modal &&
+                    {modal && user &&
                         <div className="bg-gradient-to-r from-black/70  to-red-400 p-6 rounded-xl shadow-lg w-72 text-white flex flex-col items-center gap-4">
                             <h1 className="text-xl font-bold truncate text-center">{user.displayName}</h1>
                             <h2 className="text-sm font-medium text-red-100 truncate text-center">{user.email}</h2>

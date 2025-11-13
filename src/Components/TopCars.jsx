@@ -3,6 +3,8 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { FaStar } from 'react-icons/fa6';
 import { IoCarSport } from 'react-icons/io5';
+import { Tooltip } from 'react-tooltip';
+import 'react-tooltip/dist/react-tooltip.css'
 
 const TopCars = () => {
   useEffect(() => {
@@ -61,54 +63,62 @@ const TopCars = () => {
   ];
 
   return (
+
     <div className='bg-gradient-to-t from-white via-red-50 to-white'>
-        <div className="max-w-7xl mx-auto px-6 py-16 ">
-      <h2
-        className="text-4xl flex gap-3 justify-center items-center font-extrabold text-center text-gray-900 mb-12"
-        data-aos="fade-right"
-      >
-       <IoCarSport /> <span>Top Rated Cars</span>
-      </h2>
+      <div className="max-w-7xl mx-auto px-6 py-16 ">
+        <h2
+          className="text-4xl flex gap-3 justify-center items-center font-extrabold text-center text-gray-900 mb-12"
+          data-aos="fade-right"
+        >
+          <IoCarSport /> <span>Top Rated Cars</span>
+        </h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-        {topCars.map((car) => (
-          <div
-            key={car._id}
-            className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition  transform hover:-translate-y-2 border"
-          >
-            {/* Image */}
-            <div className="relative h-56 w-full overflow-hidden rounded-t-2xl">
-              <img
-                src={car.imageUrl}
-                alt={car.carName}
-                className="w-full h-full object-cover hover:scale-110 transition duration-700"
-              />
-              <span className="absolute flex justify-center items-center gap-3 top-3 left-3 bg-red-600 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">
-                <FaStar /> {car.rating}
-              </span>
-            </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+          {topCars.map((car) => (
+            <div
+              key={car._id}
+              className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition  transform hover:-translate-y-2 border"
+            >
+              {/* Image */}
+              <div className="relative h-56 w-full overflow-hidden rounded-t-2xl">
+                <img
+                  src={car.imageUrl}
+                  alt={car.carName}
+                  className="w-full h-full object-cover hover:scale-110 transition duration-700"
+                />
+                <span className="absolute flex justify-center items-center gap-3 top-3 left-3 bg-red-600 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">
+                  <FaStar /> {car.rating}
+                </span>
+              </div>
 
-            {/* Content */}
-            <div className="p-6">
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                {car.carName}
-              </h3>
-              <p className="text-gray-600 text-sm mb-4 line-clamp-2">
-                {car.description}
-              </p>
+              {/* Content */}
+              <div className="p-6">
 
-              <div className="flex justify-between items-center">
-                <p className="text-red-600 font-extrabold text-xl">
-                  ${car.rentPricePerDay}
-                  <span className="text-sm text-gray-500"> /day</span>
-                </p>
+                <a
+                  data-tooltip-id="tooltip-anchor-hide"
+                  data-tooltip-content={`Per Day: $${car.rentPricePerDay}`}
+                  data-tooltip-delay-hide={1000}
+                  
+                  
+                >
+                  <div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                    {car.carName}
+                  </h3>
+                  <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+                    {car.description}
+                  </p>
+                </div>
+                </a>
+                <Tooltip id="tooltip-anchor-hide" className='!bg-rose-600 !w-50 !text-center !text-2xl' />
+                
 
+               
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
     </div>
   );
 };
