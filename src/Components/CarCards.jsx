@@ -21,20 +21,18 @@ const CarCards = ({ carData }) => {
     return (
         <motion.div
             whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.01 }}
+            transition={{ duration: 0 }}
             style={box}
-           
-            data-aos="fade-up"
             data-aos-delay="200"
             className="max-w-full w-full rounded-xl overflow-hidden shadow-xl 
                        bg-white border-2 border-red-50 
                        hover:shadow-2xl hover:shadow-red-400/50 
-                       transition duration-300 ease-in-out cursor-pointer"
+                       transition duration-300  ease-in-out cursor-pointer"
         >
             {/* Car Image Section */}
             <div className="h-44 relative">
                 <img
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover hover:scale-110 transition duration-700"
                     src={carData.imageUrl}
                     alt={carData.name}
                 />
