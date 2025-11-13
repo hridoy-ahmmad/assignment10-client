@@ -61,7 +61,7 @@ const TopCars = () => {
   ];
 
   return (
-    <div className='bg-amber-50'>
+    <div className='bg-gradient-to-t from-white via-red-50 to-white'>
         <div className="max-w-7xl mx-auto px-6 py-16 ">
       <h2
         className="text-4xl flex gap-3 justify-center items-center font-extrabold text-center text-gray-900 mb-12"

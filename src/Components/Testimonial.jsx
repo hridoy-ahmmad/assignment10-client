@@ -13,7 +13,7 @@ const Testimonial = () => {
   }, []);
 
   return (
-    <section className="bg-gray-100 py-16 px-4 sm:px-6 lg:px-8">
+    <section className="bg-gradient-to-t from-white via-gray-100 to-white py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
 
         {/* Section Header */}
