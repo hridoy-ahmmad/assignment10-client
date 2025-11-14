@@ -76,6 +76,7 @@ const TopCars = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {topCars.map((car) => (
             <div
+              data-aos="fade-up"
               key={car._id}
               className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition  transform hover:-translate-y-2 border"
             >
@@ -98,22 +99,22 @@ const TopCars = () => {
                   data-tooltip-id="tooltip-anchor-hide"
                   data-tooltip-content={`Per Day: $${car.rentPricePerDay}`}
                   data-tooltip-delay-hide={1000}
-                  
-                  
+
+
                 >
                   <div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                    {car.carName}
-                  </h3>
-                  <p className="text-gray-600 text-sm mb-4 line-clamp-2">
-                    {car.description}
-                  </p>
-                </div>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                      {car.carName}
+                    </h3>
+                    <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+                      {car.description}
+                    </p>
+                  </div>
                 </a>
                 <Tooltip id="tooltip-anchor-hide" className='!bg-rose-600 !w-50 !text-center !text-2xl' />
-                
 
-               
+
+
               </div>
             </div>
           ))}

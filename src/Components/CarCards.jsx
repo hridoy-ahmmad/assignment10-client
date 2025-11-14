@@ -21,9 +21,8 @@ const CarCards = ({ carData }) => {
     return (
         <motion.div
             whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0 }}
             style={box}
-            data-aos-delay="200"
+            data-aos="fade-up" 
             className="max-w-full w-full rounded-xl overflow-hidden shadow-xl 
                        bg-white border-2 border-red-50 
                        hover:shadow-2xl hover:shadow-red-400/50 
