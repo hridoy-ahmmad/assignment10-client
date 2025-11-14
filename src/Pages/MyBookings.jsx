@@ -20,7 +20,7 @@ const MyBookings = () => {
     }, []);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/bookedCars?email=${user.email}`)
+        fetch(`https://assignment10-server-rouge-six.vercel.app/bookedCars?email=${user.email}`)
             .then(res => res.json())
             .then(data => {
                 setBookedCars(data);

@@ -35,7 +35,7 @@ const AddCar = () => {
             date: new Date(),
         };
 
-        fetch('http://localhost:3000/cars', {
+        fetch('https://assignment10-server-rouge-six.vercel.app/cars', {
             method: 'POST',
             headers: { 'Content-type': 'application/json' },
             body: JSON.stringify(newCarInfo),

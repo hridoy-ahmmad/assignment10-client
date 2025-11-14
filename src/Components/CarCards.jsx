@@ -9,11 +9,11 @@ const CarCards = ({ carData }) => {
         borderRadius: 5,
     };
 
-   
+
     useEffect(() => {
         AOS.init({
-            duration: 1000, 
-            once: true,     
+            duration: 1000,
+            once: true,
             easing: 'ease-in-out',
         });
     }, []);
@@ -38,11 +38,10 @@ const CarCards = ({ carData }) => {
                 />
                 {/* badge */}
                 <div
-                    className={`absolute top-2 right-2 p-2 px-4 rounded-lg text-sm font-semibold ${
-                        carData.status === 'Booked'
-                            ? 'bg-red-400 text-white'
-                            : 'bg-green-300 text-black'
-                    }`}
+                    className={`absolute top-2 right-2 p-2 px-4 rounded-lg text-sm font-semibold ${carData.status === 'Booked'
+                        ? 'bg-red-400 text-white'
+                        : 'bg-green-300 text-black'
+                        }`}
                 >
                     {carData.status}
                 </div>
@@ -58,9 +57,16 @@ const CarCards = ({ carData }) => {
                     <p className="text-sm text-gray-600">
                         <span className="font-semibold">Model: {carData.carTypeOrModel}</span>
                     </p>
-                    <p className="text-sm text-gray-600 mb-4">
+                    <p className="text-sm text-gray-600 ">
                         <span className="font-semibold">Provider: {carData.providerName}</span>
+
                     </p>
+                    <p className='text-gray-500'>
+                      <span className='uppercase font-bold'>Published at : </span>  {
+                            carData.date
+                        }
+                    </p>
+
                 </div>
 
                 {/* Price and Button Container */}

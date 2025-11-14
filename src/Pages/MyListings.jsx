@@ -21,7 +21,7 @@ const MyListings = () => {
     }, []);
 
     useEffect(() => {
-        fetch('http://localhost:3000/cars')
+        fetch('https://assignment10-server-rouge-six.vercel.app/cars')
             .then((res) => res.json())
             .then((data) => {
                 const cars = data.filter((car) => car.providerEmail === user.email);
@@ -41,7 +41,7 @@ const MyListings = () => {
             confirmButtonText: 'Yes, delete it!',
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:3000/cars/${_id}`, { method: 'DELETE' })
+                fetch(`https://assignment10-server-rouge-six.vercel.app/cars/${_id}`, { method: 'DELETE' })
                     .then((res) => res.json())
                     .then((data) => {
                         if (data.deletedCount) {

@@ -11,7 +11,7 @@ const BrowseCars = () => {
     const [search, setSearch] = useState('')
 
     useEffect(() => {
-        fetch('http://localhost:3000/cars')
+        fetch('https://assignment10-server-rouge-six.vercel.app/cars')
             .then(res => res.json())
             .then(data => {
                 setCarsData(data)

@@ -34,7 +34,7 @@ const Updatecar = () => {
             carTypeOrModel: e.target.model.value,
         };
 
-        fetch(`http://localhost:3000/cars/${_id}`, {
+        fetch(`https://assignment10-server-rouge-six.vercel.app/cars/${_id}`, {
             method: 'PUT',
             headers: { 'Content-type': 'application/json' },
             body: JSON.stringify(updateCarInfo)

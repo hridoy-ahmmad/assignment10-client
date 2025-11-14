@@ -49,7 +49,7 @@ const Registration = () => {
         }
         createUSer(email, password)
             .then((result) => {
-                   fetch('http://localhost:3000/users', {
+                   fetch('https://assignment10-server-rouge-six.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'Content-type': 'Application/json'
@@ -92,7 +92,7 @@ const Registration = () => {
                     URL: result.user.photoURL
                 }
 
-                fetch('http://localhost:3000/users', {
+                fetch('https://assignment10-server-rouge-six.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'Content-type': 'Application/json'

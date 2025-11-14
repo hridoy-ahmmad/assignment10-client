@@ -40,7 +40,7 @@ const CarDetails = () => {
         };
 
         // Save booking
-        fetch('http://localhost:3000/bookedCars', {
+        fetch('https://assignment10-server-rouge-six.vercel.app/bookedCars', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(bookedCarsInfo)
@@ -58,7 +58,7 @@ const CarDetails = () => {
             .catch(() => toast.warning('The car has already been booked'));
 
         // Update status
-        fetch(`http://localhost:3000/status/${_id}`, {
+        fetch(`https://assignment10-server-rouge-six.vercel.app/status/${_id}`, {
             method: 'PUT',
             headers: { 'content-type': 'application/json' },
         });

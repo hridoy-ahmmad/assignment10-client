@@ -47,14 +47,14 @@ export const router = createBrowserRouter([
             {
                 path: 'browseCars',
                 element: <BrowseCars />,
-                loader: () => fetch('http://localhost:3000/cars')
+                loader: () => fetch('https://assignment10-server-rouge-six.vercel.app/cars')
             },
             {
                 path: 'carDetails/:id',
                 element: <PrivateRoute>
                     <CarDetails></CarDetails>
                 </PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:3000/cars/${params.id}`)
+                loader: ({ params }) => fetch(`https://assignment10-server-rouge-six.vercel.app/cars/${params.id}`)
 
             },
             {
@@ -62,7 +62,7 @@ export const router = createBrowserRouter([
                 element: <PrivateRoute>
                     <Updatecar></Updatecar>
                 </PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:3000/cars/${params.id}`)
+                loader: ({ params }) => fetch(`https://assignment10-server-rouge-six.vercel.app/cars/${params.id}`)
 
             },
             {
